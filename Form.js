@@ -1,8 +1,11 @@
 import { useState } from 'react';
-
+import Upload from "./Upload"
+import Login from "./Form"
+import { Route } from 'react-router-dom';
+import  { Redirect } from 'react-router-dom'
 export default function Form() {
 
-// States for registration
+// States for Login
 const [name, setName] = useState('');
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
@@ -32,7 +35,7 @@ const handlePassword = (e) => {
 // Handling the form submission
 const handleSubmit = (e) => {
 	e.preventDefault();
-	if (name === '' || email === '' || password === '') {
+	if (name === '' || password === '') {
 	setError(true);
 	} else {
 	setSubmitted(true);
@@ -48,7 +51,7 @@ const successMessage = () => {
 		style={{
 		display: submitted ? '' : 'none',
 		}}>
-		<h1>User {name} successfully registered!!</h1>
+		<h1>User {name} successfully logged in!!</h1>
 	</div>
 	);
 };
@@ -69,7 +72,7 @@ const errorMessage = () => {
 return (
 	<div className="form">
 	<div>
-		<h1>User Registration</h1>
+		<h1>Login</h1>
 	</div>
 
 	{/* Calling to the methods */}
@@ -84,9 +87,7 @@ return (
 		<input onChange={handleName} className="input"
 		value={name} type="text" />
 
-		<label className="label">Email</label>
-		<input onChange={handleEmail} className="input"
-		value={email} type="email" />
+		
 
 		<label className="label">Password</label>
 		<input onChange={handlePassword} className="input"
